@@ -26,6 +26,7 @@ const formatDuration = (hours) => {
 };
 
 const setText = (key, value) => {
+  if (!outputs[key]) return;
   outputs[key].textContent = value;
 };
 
@@ -62,7 +63,9 @@ function updateExperience() {
 }
 
 Object.values(controls).forEach((control) => {
+  if (!control) return;
   control.addEventListener('input', updateExperience);
+  control.addEventListener('change', updateExperience);
 });
 
 updateExperience();

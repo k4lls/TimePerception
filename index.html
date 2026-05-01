@@ -5,8 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>La perception du temps</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="styles.css?v=2" />
+  <script src="app.js?v=2" defer></script>
 </head>
 
 <body>
@@ -67,13 +67,7 @@
               <h3>Trajet voiture</h3>
               <div class="age-value"><span data-output="durationLabel">3 h</span></div>
             </div>
-            <input id="tripDuration" type="range" min="1" max="12" step="0.5" value="3" list="tripMarks" aria-label="Durée du trajet en voiture" />
-            <datalist id="tripMarks">
-              <option value="1" label="1 h"></option>
-              <option value="3" label="3 h"></option>
-              <option value="6" label="6 h"></option>
-              <option value="12" label="12 h"></option>
-            </datalist>
+            <input id="tripDuration" type="range" min="1" max="12" step="0.5" value="3" aria-label="Durée du trajet en voiture" />
             <div class="duration-scale" aria-hidden="true">
               <span>1 h</span>
               <span>3 h</span>

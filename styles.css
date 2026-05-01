@@ -212,6 +212,7 @@ h1 {
   pointer-events: none;
   background: linear-gradient(130deg, rgba(255, 255, 255, 0.22), transparent 32%, transparent 70%, rgba(255, 255, 255, 0.1));
   opacity: .45;
+  z-index: 0;
 }
 
 .card > * {
@@ -246,9 +247,13 @@ h1 {
 }
 
 input[type="range"] {
+  display: block;
+  position: relative;
+  z-index: 2;
   width: 100%;
   accent-color: var(--blue);
   margin: 10px 0 24px;
+  cursor: pointer;
 }
 
 .adult input[type="range"] {
