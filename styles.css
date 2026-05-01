@@ -255,24 +255,6 @@ input[type="range"] {
   accent-color: var(--pink);
 }
 
-.metric {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 16px;
-  align-items: end;
-  padding-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.metric span {
-  color: var(--muted);
-}
-
-.metric strong {
-  font-size: 38px;
-  letter-spacing: -0.05em;
-}
-
 .trip-card {
   margin-bottom: 20px;
 }
@@ -297,6 +279,15 @@ input[type="range"] {
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 22px;
   background: rgba(255, 255, 255, 0.06);
+}
+
+.duration-scale {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 800;
 }
 
 .trip-result {
@@ -338,42 +329,40 @@ input[type="range"] {
   border-radius: 10px;
 }
 
-.timeline {
+.equivalence-card {
   min-height: 340px;
   display: grid;
   align-content: center;
   gap: 20px;
 }
 
-.bar-label {
-  display: flex;
-  justify-content: space-between;
+.equivalence-line {
+  display: grid;
+  gap: 4px;
+}
+
+.equivalence-line span {
+  font-size: clamp(46px, 8vw, 92px);
+  line-height: .9;
+  font-weight: 950;
+  letter-spacing: -0.08em;
+}
+
+.equivalence-line small {
   color: var(--muted);
-  font-weight: 700;
-  margin-bottom: 8px;
+  font-size: 15px;
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
-.bar {
-  height: 42px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+.adult-equivalence span {
+  color: var(--yellow);
 }
 
-.fill {
-  height: 100%;
-  width: 20%;
-  border-radius: inherit;
-  transition: width .45s cubic-bezier(.2, .8, .2, 1);
-}
-
-.child-fill {
-  background: linear-gradient(90deg, var(--blue), var(--green));
-}
-
-.adult-fill {
-  background: linear-gradient(90deg, var(--pink), var(--yellow));
+.equivalence-arrow {
+  color: var(--muted);
+  font-size: 34px;
+  line-height: 1;
 }
 
 .clock-card {
@@ -525,11 +514,6 @@ footer {
 
 @media (max-width: 560px) {
   .label-row,
-  .metric {
-    grid-template-columns: 1fr;
-    display: grid;
-  }
-
   .age-value {
     font-size: 38px;
   }

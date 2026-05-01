@@ -17,10 +17,10 @@
   <main class="wrap">
     <header class="hero">
       <div>
-        <div class="badge"><span class="pulse"></span> Expérience interactive de temps subjectif</div>
+        <div class="badge"><span class="pulse"></span> Expérience interactive de perception du temps</div>
         <h1>Pourquoi le temps semble <span class="gradient-text">accélérer</span> quand on grandit ?</h1>
         <p class="lead">
-          Une année n'a pas le même poids dans une vie de 5 ans que dans une vie de 40 ans.
+          Une même durée n'est pas ressentie de la même façon dans une vie de 5 ans que dans une vie de 40 ans.
           Cette page visualise l'idée simple : <strong>la perception d'une durée est proportionnelle à 1 / âge</strong>.
         </p>
         <div class="hero-actions">
@@ -40,10 +40,6 @@
             <div class="age-value"><span data-output="childAge">5</span> <small>ans</small></div>
           </div>
           <input id="childAge" type="range" min="1" max="18" value="5" aria-label="Age de l'enfant" />
-          <div class="metric">
-            <span>Poids subjectif d'une année</span>
-            <strong data-output="childPercent">20%</strong>
-          </div>
         </article>
 
         <article class="card adult">
@@ -52,10 +48,6 @@
             <div class="age-value"><span data-output="adultAge">40</span> <small>ans</small></div>
           </div>
           <input id="adultAge" type="range" min="19" max="95" value="40" aria-label="Age de l'adulte" />
-          <div class="metric">
-            <span>Poids subjectif d'une année</span>
-            <strong data-output="adultPercent">2.5%</strong>
-          </div>
         </article>
       </div>
 
@@ -65,31 +57,43 @@
             <p class="formula">Exemple concret</p>
             <h2 class="trip-title">Un trajet en voiture ne dure pas pareil dans toutes les têtes.</h2>
             <p class="formula">
-              Si l'enfant vit le trajet avec une intensité proportionnelle à son âge,
-              on peut traduire cette sensation en durée équivalente pour l'adulte.
+              Choisis une durée de trajet entre 1 h et 12 h.
+              La page traduit cette sensation en durée équivalente pour l'adulte.
             </p>
           </div>
 
           <div class="trip-control">
             <div class="label-row">
-              <h3>Durée du trajet</h3>
-              <div class="age-value"><span data-output="tripHours">3</span> <small>h</small></div>
+              <h3>Trajet voiture</h3>
+              <div class="age-value"><span data-output="durationLabel">3 h</span></div>
             </div>
-            <input id="tripDuration" type="range" min="0.5" max="12" step="0.5" value="3" aria-label="Durée du trajet en heures" />
+            <input id="tripDuration" type="range" min="1" max="12" step="0.5" value="3" list="tripMarks" aria-label="Durée du trajet en voiture" />
+            <datalist id="tripMarks">
+              <option value="1" label="1 h"></option>
+              <option value="3" label="3 h"></option>
+              <option value="6" label="6 h"></option>
+              <option value="12" label="12 h"></option>
+            </datalist>
+            <div class="duration-scale" aria-hidden="true">
+              <span>1 h</span>
+              <span>3 h</span>
+              <span>6 h</span>
+              <span>12 h</span>
+            </div>
           </div>
         </div>
 
         <div class="trip-result">
-          <span>Pour un enfant de <strong data-output="tripChildAge">5 ans</strong>, un trajet de <strong data-output="tripRealDuration">3 h</strong></span>
+          <span>Pour un enfant de <strong data-output="tripChildAge">5 ans</strong>, un trajet de <strong data-output="realDuration">3 h</strong></span>
           <span>correspondrait à environ</span>
-          <strong data-output="tripAdultEquivalent">24 h</strong>
+          <strong data-output="adultEquivalent">24 h</strong>
           <span>pour un adulte de <strong data-output="tripAdultAge">40 ans</strong>.</span>
         </div>
       </article>
 
       <div class="comparison">
         <article class="card">
-          <p class="formula">Ratio subjectif</p>
+          <p class="formula">Écart de perception</p>
           <div class="big-number"><span data-output="ratio">8</span>x</div>
           <p class="formula">
             Une année à <code data-output="childAgeCode">5 ans</code> peut sembler environ
@@ -98,21 +102,19 @@
           </p>
         </article>
 
-        <article class="card timeline" id="idee">
-          <div>
-            <div class="bar-label"><span>Enfant</span><span data-output="childBarLabel">20%</span></div>
-            <div class="bar">
-              <div class="fill child-fill" data-output="childFill"></div>
-            </div>
+        <article class="card equivalence-card" id="idee">
+          <p class="formula">Lecture directe</p>
+          <div class="equivalence-line">
+            <span data-output="realDurationAlt">3 h</span>
+            <small>enfant</small>
           </div>
-          <div>
-            <div class="bar-label"><span>Adulte</span><span data-output="adultBarLabel">2.5%</span></div>
-            <div class="bar">
-              <div class="fill adult-fill" data-output="adultFill"></div>
-            </div>
+          <div class="equivalence-arrow">≈</div>
+          <div class="equivalence-line adult-equivalence">
+            <span data-output="adultEquivalentAlt">24 h</span>
+            <small>adulte</small>
           </div>
           <p class="formula">
-            Chaque barre montre la fraction de vie représentée par une seule année.
+            L'équivalent change automatiquement avec les deux âges et la durée choisie.
           </p>
         </article>
       </div>

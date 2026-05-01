@@ -16,12 +16,13 @@ const formatNumber = (value) => {
 
 const formatDuration = (hours) => {
   if (hours < 1) return `${Math.round(hours * 60)} min`;
+  if (hours < 24) return `${formatNumber(hours)} h`;
 
-  const wholeHours = Math.floor(hours);
-  const minutes = Math.round((hours - wholeHours) * 60);
+  const days = hours / 24;
+  if (days < 30) return `${formatNumber(days)} j`;
 
-  if (minutes === 0) return `${wholeHours} h`;
-  return `${wholeHours} h ${minutes} min`;
+  const months = days / 30;
+  return `${formatNumber(months)} mois`;
 };
 
 const setText = (key, value) => {
@@ -40,24 +41,19 @@ function updateExperience() {
 
   setText('childAge', childAge);
   setText('adultAge', adultAge);
-  setText('childPercent', `${formatNumber(childPercent)}%`);
-  setText('adultPercent', `${formatNumber(adultPercent)}%`);
   setText('ratio', formatNumber(ratio));
   setText('centerRatio', `${formatNumber(ratio)}x`);
   setText('childAgeCode', `${childAge} ans`);
   setText('adultAgeCode', `${adultAge} ans`);
   setText('ratioCode', `${formatNumber(ratio)} fois`);
-  setText('childBarLabel', `${formatNumber(childPercent)}%`);
-  setText('adultBarLabel', `${formatNumber(adultPercent)}%`);
 
-  setText('tripHours', formatNumber(tripDuration));
+  setText('durationLabel', formatDuration(tripDuration));
   setText('tripChildAge', `${childAge} ans`);
   setText('tripAdultAge', `${adultAge} ans`);
-  setText('tripRealDuration', formatDuration(tripDuration));
-  setText('tripAdultEquivalent', formatDuration(adultEquivalent));
-
-  outputs.childFill.style.width = `${Math.min(childPercent, 100)}%`;
-  outputs.adultFill.style.width = `${Math.min(adultPercent, 100)}%`;
+  setText('realDuration', formatDuration(tripDuration));
+  setText('realDurationAlt', formatDuration(tripDuration));
+  setText('adultEquivalent', formatDuration(adultEquivalent));
+  setText('adultEquivalentAlt', formatDuration(adultEquivalent));
 
   const childRing = Math.max(140, Math.min(310, 90 + childPercent * 10));
   const adultRing = Math.max(80, Math.min(250, 70 + adultPercent * 12));
